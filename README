@@ -1,0 +1,55 @@
+Importação de módulos e componentes:
+No início do código, há uma série de importações de módulos e componentes necessários para o desenvolvimento da aplicação React Native. Por exemplo:
+
+import React, { Component } from "react";: Esta linha importa o módulo React e o Component do pacote 'react', permitindo a criação de componentes de classe.
+import { View, Text, TextInput, Button } from "react-native";: Aqui, são importados os componentes básicos do React Native que serão usados para construir a interface do aplicativo, como View, Text, TextInput e Button.
+import Estilo from "../estilo";: Importa o objeto de estilo definido em um arquivo externo chamado 'estilo.js', que contém estilos CSS para aplicar ao aplicativo.
+Definição do componente de classe Mega:
+O componente Mega é definido como uma classe que estende o Component do React. Isso permite que ele tenha estados e métodos próprios.
+
+Estado inicial:
+O estado inicial do componente é definido no construtor da classe, utilizando a sintaxe de propriedade de classe do JavaScript. Por exemplo:
+state = {
+    qtdeNumeros: this.props.qtdeNumeros,
+    numeros: []
+}
+Isso define o estado inicial com dois valores: qtdeNumeros, que recebe o valor inicial passado como propriedade (qtdeNumeros={7}), e uma lista vazia de números.
+
+Métodos de classe:
+O componente Mega define vários métodos de classe para realizar operações específicas, como alterar a quantidade de números, gerar números não repetidos e gerar a lista de números da Mega-Sena. Por exemplo:
+alterarQtdeNumero = (qtde) => {
+    this.setState({ qtdeNumeros: +qtde })
+}
+Este método atualiza o estado qtdeNumeros com o valor passado como argumento.
+
+Renderização de componentes:
+O método render() é responsável por retornar o JSX que será renderizado na tela. Ele contém a estrutura da interface do usuário, incluindo elementos como Text, TextInput, Button e View. Por exemplo:
+render() {
+    return (
+        <>
+            <Text style={Estilo.txtG}>
+                Gerador de Mega-Sena 
+            </Text>
+            {/* Outros componentes e elementos... */}
+        </>
+    )
+}
+Este trecho renderiza um Texto com o título "Gerador de Mega-Sena" e outros elementos da interface do usuário.
+
+Interatividade:
+O componente Mega torna-se interativo através da utilização de componentes TextInput e Button. Por exemplo:
+<TextInput 
+    keyboardType={'numeric'}
+    style={{borderBottomWidth: 1}}                
+    placeholder="Qtde de Números"
+    value={this.state.qtdeNumeros}
+    onChangeText={this.alterarQtdeNumero}
+/>
+Aqui, um TextInput é utilizado para permitir que o usuário digite a quantidade de números desejada. O método onChangeText é chamado sempre que o texto no campo de entrada é alterado, atualizando assim o estado qtdeNumeros.
+
+Estilização:
+O componente Mega utiliza estilos CSS definidos no objeto Estilo para estilizar os elementos da interface do usuário. Por exemplo:
+<Text style={Estilo.txtG}>
+    Gerador de Mega-Sena 
+</Text>
+Aqui, o Texto é estilizado com o estilo txtG definido no objeto Estilo.
